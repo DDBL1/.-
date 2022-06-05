@@ -60,7 +60,7 @@ function library:Create(name, size)
 	
 	--//Destroy Old GUI
 	for i,v in pairs(game.CoreGui:GetChildren()) do
-        if v:IsA("ScreenGui") and v.Name == "?/.?.//.??" then
+        if v:IsA("ScreenGui") and v.Name == "WOSD" then
             v:Destroy()
             end
         end
