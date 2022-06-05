@@ -30,13 +30,21 @@ function library:addRound(object)
 end
 
 function library:Create(name, size)
+
+	--//Destroy Old GUI
+
+	for i, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+		if v:IsA("ScreenGui") and v.Name == "WOSD" then
+			v:Destroy()
+		end
+	end
 	name = name or "UILibrary"
 	size = size or UDim2.new(0, 400, 0, 450)
 	local UILIB = Instance.new("ScreenGui")
 	UILIB.Name = "WOSD"
 	UILIB.Parent = game.CoreGui
 	UILIB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-        UILIB.ResetOnSpawn = false
+	UILIB.ResetOnSpawn = false
 	local MainFrame = Instance.new("Frame")
 	MainFrame.Name = "MainFrame"
 	MainFrame.Parent = UILIB
@@ -57,16 +65,9 @@ function library:Create(name, size)
 	shadow.ScaleType = Enum.ScaleType.Slice
 	shadow.SliceCenter = Rect.new(10, 10, 118, 118)
 	shadow.Parent = MainFrame
-	
-	--//Destroy Old GUI
-	for i,v in pairs(game.CoreGui:GetChildren()) do
-        if v:IsA("ScreenGui") and v.Name == name then
-            v:Destroy()
-            end
-        end
-	
+
 	--linoria
-	
+
 	is.InputBegan:connect(function(input)
 		if input.KeyCode == Enum.KeyCode.RightShift then
 			MainFrame.Visible = not MainFrame.Visible
@@ -106,7 +107,7 @@ function library:Create(name, size)
 	Topbar.BackgroundColor3 = library.topbar
 	Topbar.BorderSizePixel = 0
 	Topbar.Size = UDim2.new(1, 0, 0, 25)
-	
+
 	library:addRound(Topbar)
 
 	local CloseUI = Instance.new("ImageButton")
@@ -417,9 +418,9 @@ function library:Create(name, size)
 		Dropdown.Size = UDim2.new(1, -20, 0, 50)
 		Dropdown.AutoButtonColor = false
 		Dropdown.Text = ""
-		
+
 		library:addRound(Dropdown)
-		
+
 		local ButtonName = Instance.new("TextLabel")
 		ButtonName.Name = "ButtonName"
 		ButtonName.Parent = Dropdown
@@ -470,7 +471,7 @@ function library:Create(name, size)
 		OptionsContainer.Size = UDim2.new(1, -10, 1, -60)
 		OptionsContainer.ClipsDescendants = true
 		OptionsContainer.Visible = false
-		
+
 		library:addRound(OptionsContainer)
 
 		local DropdownListLayout = Instance.new("UIListLayout")
@@ -486,7 +487,7 @@ function library:Create(name, size)
 				Divider.BackgroundColor3 = library.buttoncontainer
 				Divider.BorderSizePixel = 0
 				Divider.Size = UDim2.new(1, 0, 0, 2)
-				
+
 				local hovered = ts:Create(Divider, ti(0.2), {BackgroundColor3 = library.buttoncontainerhovered})
 				local normal = ts:Create(Divider, ti(0.2), {BackgroundColor3 = library.buttoncontainer})
 
@@ -527,7 +528,7 @@ function library:Create(name, size)
 				end)
 			end)			
 		end
-		
+
 		local hovered = ts:Create(Dropdown, ti(0.2), {BackgroundColor3 = library.buttoncontainerhovered})
 		local normal = ts:Create(Dropdown, ti(0.2), {BackgroundColor3 = library.buttoncontainer})
 
@@ -538,7 +539,7 @@ function library:Create(name, size)
 		Dropdown.MouseLeave:connect(function()
 			normal:Play()
 		end)
-		
+
 		Dropdown.MouseButton1Click:connect(function()
 			spawn(function()
 				state = not state
@@ -559,10 +560,10 @@ function library:Create(name, size)
 				end)
 			end)
 		end)
-		
+
 		updatescroll()
 	end
-	
+
 	function features:Slider(name, description, min, max, default, callback)
 		name = name or "Slider"
 		description = description or ""
@@ -570,7 +571,7 @@ function library:Create(name, size)
 		max = max or 100
 		default = default or max / 2 or 50
 		callback = callback or function() end
-			
+
 		local Slider = Instance.new("TextButton")
 		Slider.Name = "Slider"
 		Slider.Parent = Container
@@ -579,9 +580,9 @@ function library:Create(name, size)
 		Slider.Size = UDim2.new(1, -20, 0, 50)
 		Slider.AutoButtonColor = false
 		Slider.Text = ""
-		
+
 		library:addRound(Slider)
-		
+
 		local ButtonName = Instance.new("TextLabel")
 		ButtonName.Name = "ButtonName"
 		ButtonName.Parent = Slider
@@ -594,7 +595,7 @@ function library:Create(name, size)
 		ButtonName.TextColor3 = Color3.new(1, 1, 1)
 		ButtonName.TextSize = 16
 		ButtonName.TextXAlignment = Enum.TextXAlignment.Left
-		
+
 		local Description = Instance.new("TextLabel")
 		Description.Name = "Description"
 		Description.Parent = Slider
@@ -609,7 +610,7 @@ function library:Create(name, size)
 		Description.TextSize = 15
 		Description.TextXAlignment = Enum.TextXAlignment.Left
 		Description.TextYAlignment = Enum.TextYAlignment.Top
-		
+
 		local Sliding = Instance.new("TextLabel")
 		Sliding.Name = "Sliding"
 		Sliding.Parent = Slider
@@ -621,10 +622,10 @@ function library:Create(name, size)
 		Sliding.Text = ""
 		Sliding.TextColor3 = Color3.new(0, 0, 0)
 		Sliding.TextSize = 14
-		
+
 		local slidinground = Instance.new("UICorner", Sliding)
 		slidinground.CornerRadius = UDim.new(0, 2)
-		
+
 		local Indicator = Instance.new("Frame")
 		Indicator.Name = "Indicator"
 		Indicator.Parent = Sliding
@@ -632,10 +633,10 @@ function library:Create(name, size)
 		Indicator.BackgroundColor3 = Color3.new(1, 1, 1)
 		Indicator.Position = UDim2.new(0.5, 0, 0.5, 0)
 		Indicator.Size = UDim2.new(0, 16, 0, 16)
-		
+
 		local indicatorround = Instance.new("UICorner", Indicator)
 		slidinground.CornerRadius = UDim.new(0, 100)
-		
+
 		local Value = Instance.new("TextLabel")
 		Value.Name = "Value"
 		Value.Parent = Slider
@@ -648,11 +649,11 @@ function library:Create(name, size)
 		Value.TextColor3 = library.descriptiontext
 		Value.TextSize = 16
 		Value.TextXAlignment = Enum.TextXAlignment.Right
-		
+
 		local down
 		local percentage = 0.5
 		local value
-		
+
 		Slider.MouseButton1Down:connect(function()
 			down = true
 			while down and rs.RenderStepped:wait() do
@@ -665,7 +666,7 @@ function library:Create(name, size)
 				end)
 			end
 		end)
-		
+
 		connection = is.InputEnded:connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 and UILIB then
 				down = false
@@ -674,7 +675,7 @@ function library:Create(name, size)
 				connection:Disconnect()
 			end
 		end)
-		
+
 		local hovered = ts:Create(Slider, ti(0.2), {BackgroundColor3 = library.buttoncontainerhovered})
 		local normal = ts:Create(Slider, ti(0.2), {BackgroundColor3 = library.buttoncontainer})
 
@@ -685,9 +686,9 @@ function library:Create(name, size)
 		Slider.MouseLeave:connect(function()
 			normal:Play()
 		end)
-		
+
 		updatescroll()
-		
+
 		--[[local mt = {
 			__newindex = function(d, i, v)
 				print(d, i, v)
