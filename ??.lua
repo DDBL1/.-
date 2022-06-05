@@ -29,13 +29,11 @@ function library:addRound(object)
 	round.CornerRadius = UDim.new(0, 4)
 end
 
-local LibName = "???"
-
 function library:Create(name, size)
 	name = name or "UILibrary"
 	size = size or UDim2.new(0, 400, 0, 450)
 	local UILIB = Instance.new("ScreenGui")
-	UILIB.Name = LibName
+	UILIB.Name = "?/.?.//.??"
 	UILIB.Parent = game.CoreGui
 	UILIB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
         UILIB.ResetOnSpawn = false
@@ -60,12 +58,12 @@ function library:Create(name, size)
 	shadow.SliceCenter = Rect.new(10, 10, 118, 118)
 	shadow.Parent = MainFrame
 	
-	--[[//Destroy Old GUI
+	--//Destroy Old GUI
 	for i,v in pairs(game.CoreGui:GetChildren()) do
-        if v:IsA("ScreenGui") and v.Name == LibName then
+        if v:IsA("ScreenGui") and v.Name == "?/.?.//.??" then
             v:Destroy()
             end
-        end]]
+        end
 	
 	--linoria
 	
