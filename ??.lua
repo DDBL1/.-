@@ -33,7 +33,7 @@ function library:Create(name, size)
 	name = name or "UILibrary"
 	size = size or UDim2.new(0, 400, 0, 450)
 	local UILIB = Instance.new("ScreenGui")
-	UILIB.Name = "?/.?.//.??"
+	UILIB.Name = "WOSD"
 	UILIB.Parent = game.CoreGui
 	UILIB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
         UILIB.ResetOnSpawn = false
