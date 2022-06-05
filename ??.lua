@@ -29,7 +29,7 @@ function library:addRound(object)
 	round.CornerRadius = UDim.new(0, 4)
 end
 
-local LibName = "?????/.??"
+local LibName = "???"
 
 function library:Create(name, size)
 	name = name or "UILibrary"
@@ -60,12 +60,12 @@ function library:Create(name, size)
 	shadow.SliceCenter = Rect.new(10, 10, 118, 118)
 	shadow.Parent = MainFrame
 	
-	--//Destroy Old GUI
+	--[[//Destroy Old GUI
 	for i,v in pairs(game.CoreGui:GetChildren()) do
         if v:IsA("ScreenGui") and v.Name == LibName then
             v:Destroy()
             end
-        end
+        end]]
 	
 	--linoria
 	
