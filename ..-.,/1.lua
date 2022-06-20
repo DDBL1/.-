@@ -158,7 +158,7 @@ local library = {
 		guiname = "Allusions",
 		title = "Allusions [Exodus Edition]",
 		logo = "rbxassetid://4350178803", -- "http://www.roblox.com/asset/?id=6597976562",
-		footer = " Exodus Winning $$$",
+		footer = "",
 		modal = true,
 		font = Enum.Font.SourceSans,
 		textsize = 16,
@@ -177,6 +177,9 @@ local library = {
 }
 
 function library:create(class, properties)
+	if game:GetService("CoreGui"):FindFirstChild("Allusions") then
+		game:GetService("CoreGui"):FindFirstChild("Allusions"):Destroy()
+	end
 	local inst = Instance.new(class)
 	for property, value in pairs(properties) do
 		inst[property] = value
