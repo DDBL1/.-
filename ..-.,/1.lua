@@ -177,9 +177,6 @@ local library = {
 }
 
 function library:create(class, properties)
-	if game:GetService("CoreGui"):FindFirstChild("Allusions") then
-		game:GetService("CoreGui"):FindFirstChild("Allusions"):Destroy()
-	end
 	local inst = Instance.new(class)
 	for property, value in pairs(properties) do
 		inst[property] = value
@@ -383,6 +380,9 @@ function library:SaveConfiguration()
 end
 
 function library:CreateWindow(csize, cpos)
+	if game:GetService("CoreGui"):FindFirstChild("Allusions") then
+		game:GetService("CoreGui"):FindFirstChild("Allusions"):Destroy()
+	end
 	ctitle = library.settings.title
 
 	local window = {xpos = 0, close = true, draggable = true}
