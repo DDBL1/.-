@@ -380,9 +380,6 @@ function library:SaveConfiguration()
 end
 
 function library:CreateWindow(csize, cpos)
-	if game:GetService("CoreGui"):FindFirstChild("Allusions") then
-		game:GetService("CoreGui"):FindFirstChild("Allusions"):Destroy()
-	end
 	ctitle = library.settings.title
 
 	local window = {xpos = 0, close = true, draggable = true}
