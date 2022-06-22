@@ -156,7 +156,7 @@ local library = {
 	pointers = {},
 	settings = {
 		guiname = "Allusions",
-		title = "[XXXIV-a] Allusions [Exodus Edition]",
+		title = "Allusions [Exodus Edition]",
 		logo = "rbxassetid://4350178803", -- "http://www.roblox.com/asset/?id=6597976562",
 		footer = "Version 1.0",
 		modal = true,
