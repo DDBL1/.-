@@ -158,7 +158,7 @@ local library = {
 		guiname = game.PlaceId,
 		title = "[XXXIV-a] Allusions [Exodus Edition]",
 		logo = "rbxassetid://4350178803", -- "http://www.roblox.com/asset/?id=6597976562",
-		footer = "Version 1.0",
+		footer = "Version 1.1",
 		modal = true,
 		font = Enum.Font.SourceSans,
 		textsize = 16,
