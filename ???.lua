@@ -8,10 +8,6 @@ local Mouse = LocalPlayer:GetMouse();
 
 local ProtectGui = protectgui or (syn and syn.protect_gui) or (function() end);
 
-if game:GetService("CoreGui"):FindFirstChild(game.PlaceId) then
-	game:GetService("CoreGui"):FindFirstChild(game.PlaceId):Destroy()
-end
-
 local ScreenGui = Instance.new('ScreenGui');
 ScreenGui.Name = game.PlaceId
 
