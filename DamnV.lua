@@ -224,7 +224,7 @@ function boxBase:Update()
 		Torso = cf * ESP.BoxShift
 	}
 
-	if ESP.Boxes.Value then
+	if Toggles.ESP.Boxes.Value then
 		local TopLeft, Vis1 = WorldToViewportPoint(CurrentCamera, locs.TopLeft.p)
 		local TopRight, Vis2 = WorldToViewportPoint(CurrentCamera, locs.TopRight.p)
 		local BottomLeft, Vis3 = WorldToViewportPoint(CurrentCamera, locs.BottomLeft.p)
@@ -252,7 +252,7 @@ function boxBase:Update()
 		if Vis5 and Char:FindFirstChild("Humanoid") then
 			local Offset = 20
 
-			if ESP.Info.Distance.Value == true then
+			if Toggles.ESP.Info.Distance.Value == true then
 				self.Components.Distance.Visible = true
 				self.Components.Distance.Position = Vector2.new(TagPos.X, TagPos.Y - Offset) -- nwm czy nie usunąć -offset :thinking:
 				self.Components.Distance.Text = "[" .. math.floor((CurrentCamera.CFrame.p - cf.p).magnitude) .. "]"
@@ -262,7 +262,7 @@ function boxBase:Update()
 				self.Components.Distance.Visible = false
 			end
 
-			if ESP.Info.Health.Value == true then
+			if Toggles.ESP.Info.Health.Value == true then
 				self.Components.Health.Visible = true
 				self.Components.Health.Position = Vector2.new(TagPos.X, TagPos.Y - Offset)
 				self.Components.Health.Text =
@@ -275,7 +275,7 @@ function boxBase:Update()
 				self.Components.Health.Visible = false
 			end
 
-			if ESP.Info.Name.Value == true then
+			if Toggles.ESP.Info.Name.Value == true then
 				self.Components.Name.Visible = true
 				self.Components.Name.Position = Vector2.new(TagPos.X, TagPos.Y - Offset)
 				self.Components.Name.Text = self.Name
@@ -295,7 +295,7 @@ function boxBase:Update()
 		self.Components.Distance.Visible = false
 	end
 
-	if ESP.Tracers.Value then
+	if Toggles.ESP.Tracers.Value then
 		local TorsoPos, Vis6 = WorldToViewportPoint(CurrentCamera, locs.Torso.p)
 
 		if Vis6 then
@@ -499,7 +499,7 @@ game:GetService("RunService").RenderStepped:Connect(
 function()
 	CurrentCamera = workspace.CurrentCamera
 
-	if not ESP.Enabled.Value then
+	if not Toggles.ESP.Enabled.Value then
 		for i, v in pairs(ESP.Objects) do
 			if v.Type == "Box" then
 				if v.Temporary then
@@ -513,7 +513,7 @@ function()
 		end
 	end
 
-	for i, v in (ESP.Enabled.Value and pairs or ipairs)(ESP.Objects) do
+	for i, v in (Toggles.ESP.Enabled.Value and pairs or ipairs)(ESP.Objects) do
 		if v.Update then
 			local success, errorMSG = pcall(v.Update, v)
 
